@@ -1,0 +1,14 @@
+export { default as Hero } from './hero';
+export { default as Footer } from './footer';
+export { default as Header } from './header';
+export { default as SideNav } from './side-nav';
+export { default as AttendanceForm } from './dashboard/attendance-form';
+export { default as SurahsForm } from './dashboard/surahs-form';
+export { default as NewStudentForm } from './dashboard/new-student-form';
+export { default as StudentsTable } from './dashboard/students-table';
+export { default as AttendanceGrid } from './dashboard/attendance-grid';
+export { default as DateSelect } from './dashboard/date-select';
+export { default as EditableCell } from './editable-cell';
+export { default as Ayah } from './ayah';
+export { default as BestStudentForm } from './dashboard/best-student';
+export { default as Table } from './table';

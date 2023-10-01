@@ -1,0 +1,30 @@
+.word {
+  /* @media (min-width: $mantine-) {
+  } */
+  font-size: 2.5rem;
+  /* line-height: 1.7; */
+  /* padding: 2px; */
+  border: 1px dashed transparent;
+  padding-inline: 4px;
+  transition: 0.3s all;
+  border-radius: 6px;
+
+  &:hover {
+    /* color: var(--mantine-color-red-5); */
+    background-color: var(--mantine-color-red-0);
+    border-color: var(--mantine-color-red-5);
+
+    @mixin dark {
+      /* color: var(--mantine-color-red-5); */
+      background-color: var(--mantine-color-gray-8);
+      border-color: var(--mantine-color-gray-6);
+    }
+  }
+}
+
+.verse {
+  text-align: center;
+  display: inline;
+  word-wrap: break-word;
+  text-align: center;
+}

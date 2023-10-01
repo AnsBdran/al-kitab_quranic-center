@@ -1,0 +1,104 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String   @id @default(uuid())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  email      String   @unique
+  first_name String
+  last_name  String
+  password   String
+  role       Role     @default(USER)
+}
+
+model Student {
+  id             Int                      @unique @default(autoincrement())
+  createdAt      DateTime                 @default(now())
+  updatedAt      DateTime                 @updatedAt
+  student_id     String
+  first_name     String                   
+  middle_name    String
+  last_name      String
+  phone_number   String                   
+  date_of_birth  DateTime                 @db.Date
+  attendances    Attendance[]
+  surah_progress Student_Surah_Progress[]
+  BestStudent    BestStudent[]
+}
+
+model BestStudent {
+  id         Int      @id @default(autoincrement())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  student_id Int
+  student    Student  @relation(fields: [student_id], references: [id])
+  from       DateTime @db.Date
+  to         DateTime @db.Date
+  isActive   Boolean  @default(true)
+}
+
+model Attendance {
+  id              Int              @id @default(autoincrement())
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  student         Student          @relation(fields: [student_id], references: [id])
+  student_id      Int
+  attendance_date DateTime         @db.Date
+  status          AttendanceStatus @default(HOLIDAY)
+
+  @@unique([attendance_date, student_id])
+}
+
+model Surah {
+  id               Int                      @id @default(autoincrement())
+  title            String
+  verses_count     Int
+  student_progress Student_Surah_Progress[]
+}
+
+model ActiveSurah {
+  id           Int      @id @default(autoincrement())
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  surah_id     Int
+  verses_count Int
+  from         Int
+  to           Int
+  isActive     Boolean  @default(true)
+}
+
+model Student_Surah_Progress {
+  id              Int      @id @default(autoincrement())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  student         Student  @relation(fields: [student_id], references: [id])
+  student_id      Int
+  surah           Surah    @relation(fields: [surah_id], references: [id])
+  surah_id        Int
+  isComplete      Boolean
+  mistakes        Int[]
+  readingMistakes Int[]
+  note            String
+}
+
+enum AttendanceStatus {
+  PRESENT
+  LATE
+  ABSENCE
+  HOLIDAY
+}
+
+enum Role {
+  USER
+  ADMIN
+}
