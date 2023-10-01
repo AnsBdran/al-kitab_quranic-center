@@ -29,8 +29,17 @@ const Header = ({ opened, toggleSideNav }: HeaderProps) => {
     <Container h='100%'>
       <Flex align='center' justify='space-between' h='100%'>
         <Group>
-          <Text size='lg'>
-            <NavLink to='/'>مركز الكتاب</NavLink>
+          <Text>
+            <NavLink
+              to='/'
+              style={{
+                textDecoration: 'none',
+                color: 'var(--mantine-color-blue-5)',
+                fontWeight: 500,
+              }}
+            >
+              مركز الكتاب
+            </NavLink>
           </Text>
         </Group>
         <Group>

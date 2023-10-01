@@ -25,11 +25,7 @@ const WBW = () => {
         isError ? (
           <p>لا يوجد مطلوب لهذا اليوم</p>
         ) : (
-          <div
-            style={{
-              fontSize: '1.8rem',
-            }}
-          >
+          <Box className={classes.quran}>
             {data?.data.verses?.map((verse) => (
               <Text key={verse.id} className={classes.verse}>
                 {verse.words.map((word) => (
@@ -49,7 +45,7 @@ const WBW = () => {
                 ))}
               </Text>
             ))}
-          </div>
+          </Box>
         )
       ) : (
         <>

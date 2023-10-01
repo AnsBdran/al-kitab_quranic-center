@@ -12,3 +12,4 @@ export { default as EditableCell } from './editable-cell';
 export { default as Ayah } from './ayah';
 export { default as BestStudentForm } from './dashboard/best-student';
 export { default as Table } from './table';
+export { default as ComingSoon } from './coming-soon';

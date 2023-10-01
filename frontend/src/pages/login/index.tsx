@@ -8,7 +8,7 @@ import {
   Stack,
   TextInput,
 } from '@mantine/core';
-import { useForm } from '@mantine/form';
+import { isEmail, useForm } from '@mantine/form';
 import { useLogin } from '../hooks';
 import { LoginFormData } from '../types';
 
@@ -17,6 +17,10 @@ const Login = () => {
     initialValues: {
       email: '',
       password: '',
+    },
+    validate: {
+      email: isEmail('الرجاء إدخال بريد إلكتروني صالح'),
+      //   password:
     },
   });
   const { login, error, loading, setError } = useLogin();

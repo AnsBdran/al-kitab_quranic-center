@@ -34,6 +34,8 @@ model Student {
   attendances    Attendance[]
   surah_progress Student_Surah_Progress[]
   BestStudent    BestStudent[]
+
+  @@unique([first_name, middle_name, last_name])
 }
 
 model BestStudent {

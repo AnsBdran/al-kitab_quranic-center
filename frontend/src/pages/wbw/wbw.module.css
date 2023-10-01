@@ -1,16 +1,15 @@
 .word {
-  /* @media (min-width: $mantine-) {
-  } */
-  font-size: 2.5rem;
-  /* line-height: 1.7; */
-  /* padding: 2px; */
+  font-size: 1.8rem;
   border: 1px dashed transparent;
   padding-inline: 4px;
   transition: 0.3s all;
   border-radius: 6px;
 
+  @media (min-width: var(--mantine-breakpoint-lg)) {
+    font-size: 2.4rem;
+  }
+
   &:hover {
-    /* color: var(--mantine-color-red-5); */
     background-color: var(--mantine-color-red-0);
     border-color: var(--mantine-color-red-5);
 
@@ -26,5 +25,13 @@
   text-align: center;
   display: inline;
   word-wrap: break-word;
+  text-align: center;
+}
+
+.quran {
+  border: 1px solid;
+  border-color: var(--mantine-color-dimmed);
+  padding-block: 2rem;
+  padding-inline: 1rem;
   text-align: center;
 }

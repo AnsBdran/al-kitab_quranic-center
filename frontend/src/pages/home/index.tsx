@@ -1,6 +1,15 @@
 import { Icon } from '@iconify/react/dist/iconify.js';
-import { Box, Image, Title, Text, Flex, Container } from '@mantine/core';
+import {
+  Box,
+  Image,
+  Title,
+  Text,
+  Flex,
+  Container,
+  Anchor,
+} from '@mantine/core';
 import classes from './home.module.css';
+import { NavLink } from 'react-router-dom';
 
 const steps = [
   { icon: 'ic:outline-hearing', color: 'cyan', value: 'أستمع' },
@@ -25,13 +34,11 @@ const Homepage = () => {
     <Container>
       <Flex
         direction={{ base: 'column', lg: 'row' }}
-        align='center'
         justify='space-between'
+        gap='4rem'
       >
         <Box className={classes.contentWrapper}>
-          <Title className={classes.title} fz={{ base: '48px', lg: '56px' }}>
-            القارئ الصغير
-          </Title>
+          <Title className={classes.title}>القارئ الصغير</Title>
           <Flex className={classes.stepsWrapper}>
             {steps.map((step, index) => (
               <Flex
@@ -43,12 +50,21 @@ const Homepage = () => {
                 // component={Flex}
               >
                 <Icon icon={step.icon} fontSize='1.4rem' />
-                <Text fw={400 + index * 100}>{step.value}</Text>
+                <Text className={classes.stepTitle}>{step.value}</Text>
                 {index < steps.length - 1 && (
                   <Icon icon='material-symbols:line-start-arrow-notch-rounded' />
                 )}
               </Flex>
             ))}
+          </Flex>
+          <Flex gap='lg' my='auto' mt='xl' justify='center'>
+            {/* <ِAnchor component={NavLink}></ِAnchor> */}
+            <Anchor component={NavLink} to='/wbw'>
+              المطلوب اليومي
+            </Anchor>
+            <Anchor component={NavLink} to='/wbw'>
+              جدول الحضور
+            </Anchor>
           </Flex>
         </Box>
         <Box className={classes.imgWrapper}>

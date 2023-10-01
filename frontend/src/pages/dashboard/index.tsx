@@ -12,7 +12,7 @@ const Dashboard = () => {
     <Container>
       <Title>لوحة التحكم</Title>
       <Tabs defaultValue='top-student'>
-        <Tabs.List>
+        <Tabs.List mb='lg'>
           <Tabs.Tab value='attendance'>جدول الحضور</Tabs.Tab>
           <Tabs.Tab value='surahs'>جدول السور</Tabs.Tab>
           <Tabs.Tab value='students'>جدول الطلاب</Tabs.Tab>

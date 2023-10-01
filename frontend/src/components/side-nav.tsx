@@ -33,7 +33,7 @@ const navLinks: NavLink[] = [
     icon: 'material-symbols:co-present-outline',
   },
   {
-    to: '/progress',
+    to: '/surahs-progress',
     label: 'جدول حفظ السور',
     icon: 'material-symbols:data-table-outline',
   },

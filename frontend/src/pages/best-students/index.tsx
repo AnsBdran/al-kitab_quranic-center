@@ -1,5 +1,5 @@
 import { Box, Container, Title } from '@mantine/core';
-import { Table } from '../../components';
+import { ComingSoon, Table } from '../../components';
 import { getBestStudentsColumns } from '../../utils/table-columns';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
@@ -14,8 +14,9 @@ const Top = () => {
   return (
     <Box>
       <Container>
-        <Title>أفضل الطلاب</Title>
-        {data && <Table columns={getBestStudentsColumns()} data={data.data} />}
+        {/* <Title>أفضل الطلاب</Title>
+        {data && <Table columns={getBestStudentsColumns()} data={data.data} />} */}
+        <ComingSoon />
       </Container>
     </Box>
   );

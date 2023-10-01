@@ -6,7 +6,7 @@ import {
 import MainLayout from '../layouts/default';
 import {
   Login,
-  Progress,
+  SurahsProgress,
   Attendance,
   Home,
   Dashboard,
@@ -22,7 +22,7 @@ const router = createBrowserRouter(
       <Route element={<Home />} index />
       <Route element={<Attendance />} path='attendance' />
       <Route element={<DailyTask />} path='daily-task' />
-      <Route element={<Progress />} path='progress' />
+      <Route element={<SurahsProgress />} path='surahs-progress' />
       <Route element={<TopStudents />} path='top' />
       <Route element={<WBW />} path='wbw' />
       <Route

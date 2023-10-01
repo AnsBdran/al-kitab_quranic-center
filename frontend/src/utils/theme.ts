@@ -14,9 +14,9 @@ export const theme = createTheme({
     }),
     Title: Title.extend({
       defaultProps: {
-        c: 'indigo.6',
-        my: 'lg',
+        mb: 'lg',
       },
+      styles: {},
     }),
     Alert: Alert.extend({
       styles: {
