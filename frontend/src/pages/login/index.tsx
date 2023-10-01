@@ -9,8 +9,7 @@ import {
   TextInput,
 } from '@mantine/core';
 import { isEmail, useForm } from '@mantine/form';
-import { useLogin } from '../hooks';
-import { LoginFormData } from '../types';
+import { useLogin } from '../../hooks';
 
 const Login = () => {
   const form = useForm<LoginFormData>({
