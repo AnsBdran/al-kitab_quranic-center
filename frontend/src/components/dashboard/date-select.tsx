@@ -1,4 +1,3 @@
-import { AttendanceDate } from '../types';
 import {
   Combobox,
   Button,
@@ -15,17 +14,17 @@ type DateSelectProps = {
   setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
   selectedDate: AttendanceDate | null;
   setSelectedDate: React.Dispatch<React.SetStateAction<AttendanceDate | null>>;
-  setIsErrorAlertVisible: React.Dispatch<React.SetStateAction<boolean>>;
-  setIsSuccessAlertVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  // setIsErrorAlertVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  // setIsSuccessAlertVisible: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const DateSelect = ({
   searchTerm,
   setSearchTerm,
   setSelectedDate,
-  setIsErrorAlertVisible,
-  setIsSuccessAlertVisible,
-}: DateSelectProps) => {
+}: // setIsErrorAlertVisible,
+// setIsSuccessAlertVisible,
+DateSelectProps) => {
   const combobox = useCombobox({
     onDropdownClose: () => {
       combobox.focusSearchInput();
@@ -70,8 +69,8 @@ const DateSelect = ({
         console.log('combbooooo', date);
         setSelectedDate(JSON.parse(date));
         combobox.closeDropdown();
-        setIsErrorAlertVisible(false);
-        setIsSuccessAlertVisible(false);
+        // setIsErrorAlertVisible(false);
+        // setIsSuccessAlertVisible(false);
       }}
     >
       <Combobox.Target>

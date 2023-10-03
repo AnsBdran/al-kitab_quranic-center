@@ -7,11 +7,8 @@ import {
   Grid,
   Title,
 } from '@mantine/core';
-import axios from 'axios';
 import { Fragment } from 'react';
 import 'dayjs/locale/ar';
-import { useQuery } from '@tanstack/react-query';
-import { AttendanceFormFields, Student } from '../types';
 import { UseFormReturnType } from '@mantine/form';
 
 type AttendanceGridProps = {
@@ -19,10 +16,11 @@ type AttendanceGridProps = {
     AttendanceFormFields,
     (values: AttendanceFormFields) => AttendanceFormFields
   >;
+  students: Student[];
 };
 
 const AttendanceGrid = ({ form, students }: AttendanceGridProps) => {
-  const studentsStatusOptions = students?.data.students.map(
+  const studentsStatusOptions = students?.map(
     (student: Student, index: number) => (
       <Fragment key={student.id}>
         <GridCol span={4}>{student.name}</GridCol>

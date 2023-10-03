@@ -1,11 +1,13 @@
-import { Box, Title, Text, Container, Skeleton, Alert } from '@mantine/core';
+import { Box, Title, Text, Container, Skeleton } from '@mantine/core';
 import { useTaskVerses, useWordSound } from '../../hooks';
 import classes from './wbw.module.css';
 
 const WBW = () => {
-  const { data, pageNumbers, isLoading, isError } = useTaskVerses({});
-  const { playWord, activeWord } = useWordSound(data?.data.verses);
+  const { data, pageNumbers, isLoading, isError } = useTaskVerses();
+  const verses = data?.verses;
+  const { playWord, activeWord } = useWordSound(verses);
   console.log({ data });
+
   return (
     <Container>
       {pageNumbers?.map((page) => (
@@ -26,7 +28,7 @@ const WBW = () => {
           <p>لا يوجد مطلوب لهذا اليوم</p>
         ) : (
           <Box className={classes.quran}>
-            {data?.data.verses?.map((verse) => (
+            {verses?.map((verse: VerseFull) => (
               <Text key={verse.id} className={classes.verse}>
                 {verse.words.map((word) => (
                   <Text
@@ -49,11 +51,7 @@ const WBW = () => {
         )
       ) : (
         <>
-          <Skeleton height={10} radius='xl' mb='md' />
-          <Skeleton height={10} radius='xl' mb='md' />
-          <Skeleton height={10} radius='xl' mb='md' />
-          <Skeleton height={10} radius='xl' mb='md' />
-          <Skeleton height={10} radius='xl' mb='md' />
+          <Skeleton height={150} radius='md' />
         </>
       )}
     </Container>

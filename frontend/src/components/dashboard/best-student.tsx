@@ -1,32 +1,49 @@
-import { Box, Button, Indicator, Select, Title, darken } from '@mantine/core';
-import { useStudents } from '../../hooks';
+import { Box, Button, Indicator, Select, Title } from '@mantine/core';
+// import { useStudents } from '../../hooks';
 import { DatePicker } from '@mantine/dates';
 import { useForm } from '@mantine/form';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import dayjs from 'dayjs';
 import { notifications } from '@mantine/notifications';
 
 const TopStudentForm = () => {
-  const { data: students } = useStudents({
-    onSuccess: () => console.log('hi'),
+  // const { data } = useStudents();
+  const { data } = useQuery({
+    queryKey: ['students'],
+    queryFn: () =>
+      axios
+        .get(import.meta.env.VITE_SERVER_URL + 'students/basic')
+        .then((res) => res.data),
+    onSuccess: (data) => {
+      form.setFieldValue(
+        'attendances',
+        data?.students.map((student: Student) => ({
+          student_id: student.id,
+          status: 'PRESENT',
+        }))
+      );
+    },
+    refetchOnWindowFocus: false,
   });
 
-  const form = useForm({
+  const students = data?.students;
+  console.log('sutt', students);
+
+  const form = useForm<BestStudentFormData>({
     initialValues: {
       student: null,
       dateRange: [null, null],
     },
   });
 
-  const { mutate, data, error, isLoading } = useMutation({
+  const { mutate, isLoading } = useMutation({
     mutationKey: ['best-student'],
-    mutationFn: (values) =>
+    mutationFn: (values: BestStudentFormData) =>
       axios.post(import.meta.env.VITE_SERVER_URL + 'top-student', values),
-    onError: (err) => notifications.show({ message: 'لم تتم العملية بنجاح' }),
+    onError: () => notifications.show({ message: 'لم تتم العملية بنجاح' }),
   });
 
-  const handleSubmit = (values) => {
+  const handleSubmit = (values: BestStudentFormData) => {
     console.log(values);
     mutate(values);
   };
@@ -37,7 +54,7 @@ const TopStudentForm = () => {
       <Box component='form' onSubmit={form.onSubmit(handleSubmit)}>
         <Select
           searchable
-          data={students?.data?.students.map((student) => ({
+          data={students?.map((student: Student) => ({
             label: student.name,
             value: student.id.toString(),
           }))}
@@ -46,7 +63,7 @@ const TopStudentForm = () => {
         <DatePicker
           type='range'
           locale='ar'
-          monthsListFormat='mm'
+          monthsListFormat='MMMM - MM'
           firstDayOfWeek={6}
           weekdayFormat='dd'
           withCellSpacing={true}

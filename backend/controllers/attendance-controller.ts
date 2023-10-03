@@ -40,8 +40,10 @@ export const attendance_formatted_get = async (req: Request, res: Response) => {
         `${record.student.first_name} ${record.student.last_name}`
       ] = record.status;
     }
+    console.log({ transformedData });
 
-    const resultData = Object.keys(transformedData).map((date) => ({
+    const resultData = Object.keys(transformedData).map((date, index) => ({
+      id: index,
       attendance_date: date,
       ...transformedData[date],
     }));
@@ -143,7 +145,9 @@ export const attendance_oldDays_get = async (req: Request, res: Response) => {
     // console.log(dateRange, 'range');
     const formattedDays = formatDays(dateRange, oldDays);
 
-    res.status(200).json({ oldDays: formattedDays, dateRange });
+    res
+      .status(200)
+      .json({ oldDays: formattedDays.reverse(), dateRange, _: oldDays });
   } catch (error: any) {
     console.log('error', error);
     res.status(400).json({ error: error.message });

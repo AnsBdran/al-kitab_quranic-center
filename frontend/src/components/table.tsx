@@ -1,32 +1,31 @@
 import { Table, TableTbody } from '@mantine/core';
 import {
-  Column,
+  // ColumnDef,
   flexRender,
-  getCoreRowModel,
-  useReactTable,
+  // getCoreRowModel,
+  // useReactTable,
+  Table as TanstackTable,
 } from '@tanstack/react-table';
 
-type TableProps = {
-  data: TableData;
-  columns: Column<AttendaceRecord | StudentRecord>[];
+// type TableProps = {
+//   data: unknown;
+//   columns: unknown[] | undefined;
+// };
+// columns: ColumnDef<AttendanceRecord>[] | ColumnDef<StudentRecord>[];
+
+type TableProps<T> = {
+  table: TanstackTable<T>;
 };
 
-const Table_ = ({ data, columns }: TableProps) => {
-  const table = useReactTable({
-    data,
-    getCoreRowModel: getCoreRowModel(),
-    columns,
-  });
-  // console.log('table', { data, columns });
+const Table_ = <T,>({ table }: TableProps<T>) => {
+  // const table = useReactTable({
+  //   data,
+  //   getCoreRowModel: getCoreRowModel(),
+  //   columns,
+  // });
 
   return (
-    <Table
-      withColumnBorders
-      // highlightOnHoverColor='cyan.0'
-      highlightOnHover
-      withTableBorder
-      striped
-    >
+    <Table withColumnBorders highlightOnHover withTableBorder striped>
       <Table.Thead>
         {table.getHeaderGroups().map((headerGroup) => (
           <Table.Tr key={headerGroup.id}>

@@ -37,19 +37,12 @@ type AttendanceFormFields = {
   }[];
 };
 
-type AttendaceRecord = {
+type AttendanceRecord = {
   id: number;
   attendance_date: string;
-  [student_name: string]: 'LATE' | 'PRESENT' | 'ABSENCE' | 'HOLIDAY';
+  (key: string): string;
 };
-
-// type TableColumn = {
-//   header: string;
-//   accessorKey: string;
-//   cell?: unknown;
-// };
-
-// type TableColumn = unknown[];
+// & Record<string, 'LATE' | 'PRESENT' | 'ABSENCE' | 'HOLIDAY'>;
 
 type StudentRecord = {
   id: number;
@@ -64,7 +57,7 @@ type StudentRecord = {
 };
 
 type StudentsTableData = StudentRecord[];
-type AttendanceTableData = AttendaceRecord[];
+type AttendanceTableData = AttendanceRecord[];
 
 type TableData = AttendanceTableData | StudentsTableData;
 
@@ -88,4 +81,39 @@ type NavLink = {
   to: string;
   label: string;
   icon: string;
+};
+
+type VerseFull = {
+  id: number;
+  page_number: number;
+  words: {
+    id: number;
+    page_number: number;
+    audio_url: string;
+    code_v1: string;
+  }[];
+};
+
+type VerseAudio = {
+  verse_key: string;
+  url: string;
+};
+
+type BestStudentFormData = {
+  student: string | null;
+  dateRange: [string | null, string | null];
+};
+
+type SurahFormData = {
+  surah: string;
+  range: [number, number];
+};
+// type UseVerseSoundProp = {
+//   verses: Verse[];
+// };
+
+type TableColumn = {
+  header: string;
+  cell: React.ReactNode;
+  accessorKey: string;
 };

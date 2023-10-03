@@ -9,9 +9,7 @@ import {
 } from '@mantine/core';
 import { DateInput } from '@mantine/dates';
 import { hasLength, useForm } from '@mantine/form';
-// import { StudentFormData } from '../../types';
-// import { useUploadData } from '../../hooks';
-import { isError, useMutation } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 
 const NewStudentForm = () => {
@@ -40,7 +38,7 @@ const NewStudentForm = () => {
     },
   });
 
-  const { mutate, error, isLoading, isError, data, isSuccess } = useMutation({
+  const { mutate, isLoading, isError, data, isSuccess } = useMutation({
     mutationKey: ['post-student'],
     mutationFn: (values: StudentFormData) =>
       axios.post(import.meta.env.VITE_SERVER_URL + 'students', values),

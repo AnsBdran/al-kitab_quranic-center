@@ -1,9 +1,10 @@
 import { Input } from '@mantine/core';
 import { useState } from 'react';
 
-const EditableCell = ({ getValue, ...props }) => {
-  const initialState = getValue();
-  const [input, setInput] = useState(initialState);
+const EditableCell = () => {
+  // const initialState = getValue();
+  // const [input, setInput] = useState(initialState);
+  const [input, setInput] = useState('');
   // console.log('edit, props', props);
   return (
     <Input

@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 
-const useVerseSound = (data) => {
+const useVerseSound = (verses: Verse[]) => {
   const [audioList, setAudioList] = useState<
     { id: number; audio: HTMLAudioElement }[]
   >([]);
   const [playingAyahId, setPlayingAyahId] = useState<null | number>(null);
 
   useEffect(() => {
-    const ayah_sounds = data?.data.verses.map((verse: Verse) => {
+    const versesSound = verses?.map((verse: Verse) => {
       const audio = new Audio(verse.audio);
       audio.addEventListener('ended', () => setPlayingAyahId(null));
 
@@ -16,9 +16,8 @@ const useVerseSound = (data) => {
         audio,
       };
     });
-    setAudioList(ayah_sounds);
-    // return () => audio.removeEventListener()
-  }, [data]);
+    setAudioList(versesSound);
+  }, [verses]);
 
   const stopSound = () => {
     audioList.forEach((audio) => {
@@ -31,12 +30,10 @@ const useVerseSound = (data) => {
     setPlayingAyahId(id);
     audioList?.find((audio) => audio?.id === id)?.audio.play();
   };
-  // const reset = () => setPlayingAyahId(null);
 
   return {
     playAudio,
     playingAyahId,
-    // , reset
   };
 };
 

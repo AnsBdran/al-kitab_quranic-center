@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 type WordAudio = { audio: HTMLAudioElement; id: number };
 
-const useWordSound = (verses) => {
+const useWordSound = (verses: VerseFull[] | undefined) => {
   const [audioList, setAudioList] = useState<null | WordAudio[]>(null);
   const [activeWord, setActiveWord] = useState<null | number>(null);
 
@@ -25,7 +25,6 @@ const useWordSound = (verses) => {
     audioList?.forEach((audio) => {
       audio.audio.currentTime = 0;
       audio.audio.pause();
-      // setActiveWord(null);
     });
   };
 

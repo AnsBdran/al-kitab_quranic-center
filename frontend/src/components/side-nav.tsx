@@ -1,7 +1,6 @@
 import { Icon } from '@iconify/react/dist/iconify.js';
 import {
   NavLink as MantLink,
-  Stack,
   NavLinkProps as MantLinkProps,
   Box,
 } from '@mantine/core';
@@ -55,7 +54,6 @@ const SideNav = ({ closeSideNav }: SideNavProps) => {
   );
 
   const location = useLocation();
-  const isActive = location;
 
   return (
     <>

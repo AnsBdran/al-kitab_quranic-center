@@ -36,6 +36,8 @@ const Homepage = () => {
         direction={{ base: 'column', lg: 'row' }}
         justify='space-between'
         gap='4rem'
+        mih='70vh'
+        align='center'
       >
         <Box className={classes.contentWrapper}>
           <Title className={classes.title}>القارئ الصغير</Title>
@@ -62,7 +64,7 @@ const Homepage = () => {
             <Anchor component={NavLink} to='/wbw'>
               المطلوب اليومي
             </Anchor>
-            <Anchor component={NavLink} to='/wbw'>
+            <Anchor component={NavLink} to='/attendance'>
               جدول الحضور
             </Anchor>
           </Flex>

@@ -1,24 +1,32 @@
-import { DefaultedQueryObserverOptions, useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 
-const useTaskVerses = (props) => {
-  const queryRes = useQuery({
+type UseTaskVersesData = {
+  verses: VerseFull[];
+};
+
+const useTaskVerses = () => {
+  const queryRes = useQuery<[unknown], unknown, UseTaskVersesData>({
     queryKey: ['task-verses'],
     queryFn: () =>
-      axios.get(import.meta.env.VITE_SERVER_URL + 'daily-task/wbw'),
-    ...props,
+      axios
+        .get(import.meta.env.VITE_SERVER_URL + 'daily-task/wbw')
+        .then((res) => res.data),
+    // ...props,
   });
-  // const verses = queryRes.data?.data.verses;
-  // console.log({ verses });
+  console.log('123', queryRes.data);
 
-  const pageNumbers: number[] | undefined =
-    queryRes.data &&
-    ([
-      ...new Set(queryRes?.data.data.verses.map((verse) => verse.page_number)),
-    ] as number[] | undefined);
+  const pageNumbers: number[] | null = (
+    queryRes.data
+      ? [
+          ...new Set(
+            queryRes?.data.verses.map((verse: VerseFull) => verse.page_number)
+          ),
+        ]
+      : null
+  ) as number[] | null;
 
   return {
-    // verses,
     pageNumbers,
     ...queryRes,
   };

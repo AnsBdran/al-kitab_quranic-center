@@ -85,7 +85,7 @@ export const dailyTask_wbw_get = async (req: Request, res: Response) => {
       (verse: any) =>
         verse.verse_number >= task?.from && verse.verse_number <= task?.to
     );
-    res.status(200).json({ verses, task });
+    res.status(200).json({ verses });
   } catch (error: any) {
     res.status(400).json({ error: error.message });
   }

@@ -1,6 +1,6 @@
 import { Box, Button, Text, RangeSlider, Title } from '@mantine/core';
 import SurahSelect from '../surah-select';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useForm } from '@mantine/form';
 import surahs from '../../utils/surahs.json';
 import { useMutation } from '@tanstack/react-query';
@@ -22,14 +22,14 @@ const SurahsForm = () => {
     setMax(surah.verses);
   };
 
-  const form = useForm({
+  const form = useForm<SurahFormData>({
     initialValues: {
       surah: '',
       range: [0, 100],
     },
   });
 
-  const { mutate, isLoading, data, error } = useMutation({
+  const { mutate, isLoading } = useMutation({
     mutationFn: (values: {
       surah_id: number;
       verses: number;
@@ -43,7 +43,6 @@ const SurahsForm = () => {
   }) => {
     if (!values.surah) return;
     const surah = JSON.parse(values.surah);
-    console.log(values);
     mutate({
       surah_id: surah.value,
       verses: surah.verses,
@@ -51,7 +50,6 @@ const SurahsForm = () => {
     });
   };
 
-  // console.log({ error, data });
   return (
     <Box>
       <Title order={2}>اختيار سورة جديدة</Title>

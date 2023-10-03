@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { useState } from 'react';
-import { LoginFormData } from '../types';
 import useAuthContext from './useAuthContext';
 
 const useLogin = () => {
