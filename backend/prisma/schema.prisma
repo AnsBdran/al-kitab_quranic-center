@@ -50,7 +50,7 @@ model BestStudent {
 }
 
 model Attendance {
-  id              Int              @id @default(autoincrement())
+  id              String              @id @default(uuid())
   createdAt       DateTime         @default(now())
   updatedAt       DateTime         @updatedAt
   student         Student          @relation(fields: [student_id], references: [id])

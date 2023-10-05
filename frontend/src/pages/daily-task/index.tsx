@@ -19,7 +19,7 @@ const DailyTask = () => {
         <Title>المطلوب اليومي</Title>
         {isLoading ? (
           <Skeleton height={220} />
-        ) : verses.length ? (
+        ) : verses?.length ? (
           <Stack gap={12}>
             {verses.map((verse: Verse) => (
               <Ayah

@@ -19,8 +19,6 @@ const useWordSound = (verses: VerseFull[] | undefined) => {
     setAudioList(_audioList);
   }, [verses]);
 
-  console.log('audio list', audioList);
-
   const stopWord = () => {
     audioList?.forEach((audio) => {
       audio.audio.currentTime = 0;

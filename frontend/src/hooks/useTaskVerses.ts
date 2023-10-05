@@ -12,9 +12,7 @@ const useTaskVerses = () => {
       axios
         .get(import.meta.env.VITE_SERVER_URL + 'daily-task/wbw')
         .then((res) => res.data),
-    // ...props,
   });
-  console.log('123', queryRes.data);
 
   const pageNumbers: number[] | null = (
     queryRes.data

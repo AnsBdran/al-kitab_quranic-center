@@ -100,7 +100,7 @@ export const attendance_index_post = async (req: Request, res: Response) => {
   } catch (error: any) {
     console.log(error);
     const _ = handleError(error);
-    res.status(400).json({ error: _.message });
+    res.status(400).json({ error: _.message, _error: error });
   }
 };
 

@@ -6,7 +6,6 @@ const WBW = () => {
   const { data, pageNumbers, isLoading, isError } = useTaskVerses();
   const verses = data?.verses;
   const { playWord, activeWord } = useWordSound(verses);
-  console.log({ data });
 
   return (
     <Container>
