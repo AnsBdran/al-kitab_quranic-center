@@ -7,7 +7,8 @@ const WBW = () => {
   const { data, pageNumbers, isLoading, isError } = useTaskVerses();
   const verses = data?.verses;
   const { playWord, activeWord } = useWordSound(verses);
-  const surah = verses && surahs[parseInt(verses[0].verse_key.split(':')[0])];
+  const surah =
+    verses && surahs[parseInt(verses[0].verse_key.split(':')[0]) - 1];
   return (
     <Container>
       {pageNumbers?.map((page) => (

@@ -22,7 +22,7 @@ const DailyTask = () => {
   const verses = data?.data.verses;
 
   const { playAudio, playingAyahId } = useVerseSound(verses);
-  const surah = verses && surahs[parseInt(verses[0].key.split(':')[0])];
+  const surah = verses && surahs[parseInt(verses[0].key.split(':')[0]) - 1];
   const { pageNumbers } = useTaskVerses();
 
   return (
