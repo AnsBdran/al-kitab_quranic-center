@@ -32,11 +32,9 @@ const Header = ({ opened, toggleSideNav }: HeaderProps) => {
           <Text>
             <NavLink
               to='/'
-              color='indigo.2'
               style={{
                 textDecoration: 'none',
-                fontWeight: 500,
-                color: 'indigo',
+                fontWeight: 600,
               }}
             >
               مركز الكتاب
