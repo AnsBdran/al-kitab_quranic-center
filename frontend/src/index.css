@@ -15,4 +15,5 @@ td,
 th {
   word-break: keep-all;
   white-space: nowrap;
+  padding: 0.8rem;
 }

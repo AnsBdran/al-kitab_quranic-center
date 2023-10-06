@@ -1,29 +1,11 @@
 import { Table, TableTbody } from '@mantine/core';
-import {
-  // ColumnDef,
-  flexRender,
-  // getCoreRowModel,
-  // useReactTable,
-  Table as TanstackTable,
-} from '@tanstack/react-table';
-
-// type TableProps = {
-//   data: unknown;
-//   columns: unknown[] | undefined;
-// };
-// columns: ColumnDef<AttendanceRecord>[] | ColumnDef<StudentRecord>[];
+import { flexRender, Table as TanstackTable } from '@tanstack/react-table';
 
 type TableProps<T> = {
   table: TanstackTable<T>;
 };
 
 const Table_ = <T,>({ table }: TableProps<T>) => {
-  // const table = useReactTable({
-  //   data,
-  //   getCoreRowModel: getCoreRowModel(),
-  //   columns,
-  // });
-
   return (
     <Table withColumnBorders highlightOnHover withTableBorder striped>
       <Table.Thead>

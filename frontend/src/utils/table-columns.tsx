@@ -74,12 +74,15 @@ export const getStudentsTableColumns = () => {
 
 export const getAttendanceColumns = (data: AttendanceTableData) => {
   if (!data) return;
-  const columns = [
+  const columns: {
+    accessorKey: string;
+    header: string | ReactNode;
+    cell: (info: { getValue: () => string }) => string | ReactNode;
+  }[] = [
     {
       accessorKey: 'attendance_date',
       header: 'اليوم',
-      cell: (info: { getValue: () => string }): string | ReactNode =>
-        parseDate(info.getValue() as string),
+      cell: (info) => parseDate(info.getValue() as string),
     },
   ];
 
@@ -89,6 +92,7 @@ export const getAttendanceColumns = (data: AttendanceTableData) => {
       if (columns.some((c) => c.header === key)) return;
       columns.push({
         accessorKey: key,
+        // header: <span key={key}>{key}</span>,
         header: key,
         cell: (info) => parseAttendanceStatus(info.getValue() as string),
       });

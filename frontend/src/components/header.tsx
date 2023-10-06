@@ -26,16 +26,17 @@ const Header = ({ opened, toggleSideNav }: HeaderProps) => {
   const { logout } = useLogout();
 
   return (
-    <Container h='100%'>
+    <Container h='100%' px='md'>
       <Flex align='center' justify='space-between' h='100%'>
         <Group>
           <Text>
             <NavLink
               to='/'
+              color='indigo.2'
               style={{
                 textDecoration: 'none',
-                color: 'var(--mantine-color-blue-5)',
                 fontWeight: 500,
+                color: 'indigo',
               }}
             >
               مركز الكتاب
@@ -49,7 +50,11 @@ const Header = ({ opened, toggleSideNav }: HeaderProps) => {
             size='lg'
             style={{ border: 'none' }}
           >
-            {dark ? <Icon icon='ph:sun-bold' /> : <Icon icon='bi:moon-fill' />}
+            {!dark ? (
+              <Icon icon='ph:sun-bold' />
+            ) : (
+              <Icon icon='bi:moon-stars' />
+            )}
           </ActionIcon>
           {user && (
             <Menu>

@@ -13,7 +13,8 @@ const Attendance = () => {
   });
   const attendances = data?.data.attendances;
 
-  const columns = getAttendanceColumns(attendances) ?? [];
+  // const bestStatsStudents =
+  const columns = attendances && getAttendanceColumns(attendances);
   const table = useReactTable({
     columns,
     data: data?.data.attendances,

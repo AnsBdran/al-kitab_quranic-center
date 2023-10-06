@@ -36,7 +36,7 @@ export const dailyTask_index_get = async (req: Request, res: Response) => {
 
     const responses = await axios.all([
       axios.get(
-        `https://api.quran.com/api/v4/quran/verses/uthmani?chapter_number=${task?.surah_id}`
+        `https://api.quran.com/api/v4/quran/verses/code_v1?chapter_number=${task?.surah_id}`
       ),
       axios.get(
         `https://api.quran.com/api/v4/recitations/2/by_chapter/${task.surah_id}?per_page=${task.verses_count}`
@@ -45,11 +45,17 @@ export const dailyTask_index_get = async (req: Request, res: Response) => {
     const [text, audio] = responses;
 
     const _ = text.data.verses.map(
-      (verse: { id: number; verse_key: string; text_uthmani: string }) => ({
+      (verse: {
+        id: number;
+        verse_key: string;
+        code_v1: string;
+        v1_page: string;
+      }) => ({
         id: verse.id,
-        text: verse.text_uthmani,
+        text: verse.code_v1,
         key: verse.verse_key,
         number: verse.verse_key.split(':')[1],
+        page_number: verse.v1_page,
         audio:
           'https://verses.quran.com/' +
           audio.data.audio_files.find(
@@ -63,7 +69,9 @@ export const dailyTask_index_get = async (req: Request, res: Response) => {
       return verse.number >= task.from && verse.number <= task.to;
     });
 
-    res.status(200).json({ verses, audio: audio.data.audio_files });
+    res
+      .status(200)
+      .json({ verses, audio: audio.data.audio_files, text: text.data });
   } catch (error: any) {
     res.status(400).json({ error: error.message });
   }

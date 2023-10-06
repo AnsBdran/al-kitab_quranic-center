@@ -9,7 +9,6 @@ export { default as StudentsTable } from './dashboard/students-table';
 export { default as AttendanceGrid } from './dashboard/attendance-grid';
 export { default as DateSelect } from './dashboard/date-select';
 export { default as EditableCell } from './editable-cell';
-export { default as Ayah } from './ayah';
 export { default as BestStudentForm } from './dashboard/best-student';
 export { default as Table } from './table';
 export { default as ComingSoon } from './coming-soon';

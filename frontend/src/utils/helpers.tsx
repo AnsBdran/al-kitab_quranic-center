@@ -56,3 +56,15 @@ export const parseAttendanceStatus = (status: string) => {
 
 export const parseDate = (isoDate: string) =>
   dayjs(isoDate).locale('ar').format('dddd، DD-MM');
+
+// export const getBestStatsStudents = (daysRecord: AttendanceRecord[]) => {
+//   const result = {};
+//   let daysCount = 0;
+//   daysRecord.forEach((day) => {
+//     daysCount++;
+//     Object.keys(day).forEach((key) => {
+//       if (key === 'id' || key === 'attendance_date') return;
+//       // if ()
+//     });
+//   });
+// };

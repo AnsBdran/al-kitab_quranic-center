@@ -1,3 +1,70 @@
+@define-mixin center {
+  display: flex;
+  align-items: center;
+  /* background-color: red; */
+  justify-content: center;
+}
+
+@define-mixin border-color {
+  border-color: light-dark(
+    var(--mantine-color-gray-3),
+    var(--mantine-color-gray-6)
+  );
+}
+
 .demo {
   font-size: 4rem;
+}
+
+.surahBox {
+  border-radius: 9px;
+  background-color: light-dark(
+    var(--mantine-color-indigo-0),
+    var(--mantine-color-gray-9)
+  );
+  overflow: hidden;
+  border: 3px solid
+    light-dark(var(--mantine-color-indigo-9), var(--mantine-color-gray-6));
+}
+
+/* surah name */
+.surahName {
+  background-color: light-dark(
+    var(--mantine-color-indigo-9),
+    var(--mantine-color-gray-8)
+  );
+  color: light-dark(var(--mantine-color-indigo-0), var(--mantine-color-gray-0));
+  padding: 1rem;
+  text-align: center;
+  margin-bottom: 0 !important;
+  border-bottom: 2px solid;
+  border-color: light-dark(
+    var(--mantine-color-indigo-9),
+    var(--mantine-color-gray-6)
+  );
+}
+
+.verseNumber {
+  border-left: 1px solid;
+  @mixin border-color;
+  text-align: center;
+  width: 0;
+}
+
+.verseText {
+  padding: 0.9rem;
+  font-size: 1.8rem;
+  word-spacing: 5px;
+}
+
+.audioIcon {
+  border-right: 1px solid;
+  @mixin border-color;
+}
+
+.activeVerse {
+  background-color: light-dark(
+    var(--mantine-color-indigo-2),
+    var(--mantine-color-gray-7)
+  );
 }

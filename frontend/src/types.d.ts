@@ -75,6 +75,7 @@ type Verse = {
   key: string;
   text: string;
   audio: string;
+  page_number: string;
 };
 
 type NavLink = {
@@ -86,6 +87,7 @@ type NavLink = {
 type VerseFull = {
   id: number;
   page_number: number;
+  verse_key: string;
   words: {
     id: number;
     page_number: number;
